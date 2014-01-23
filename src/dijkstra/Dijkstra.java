@@ -38,13 +38,13 @@ public class Dijkstra {
     public int ratkaise(int solmut, int lahto, int kohde) {
         pq.add(new Solmu(lahto, 0));
         while (!pq.isEmpty()) {
-            Solmu kukkuu = pq.poll();
-            if (kukkuu.getTunnus() == kohde) {
-                return kukkuu.getPaino();
+            Solmu nykyinen = pq.poll();
+            if (nykyinen.getTunnus() == kohde) {
+                return nykyinen.getPaino();
             }
             for (int i = 0; i < solmut; i++) {
-                if (verkko[kukkuu.getTunnus()][i] > 0) {
-                    pq.add(new Solmu(i, kukkuu.getPaino() + verkko[kukkuu.getTunnus()][i]));
+                if (verkko[nykyinen.getTunnus()][i] > 0) {
+                    pq.add(new Solmu(i, nykyinen.getPaino() + verkko[nykyinen.getTunnus()][i]));
                 }
             }
 
