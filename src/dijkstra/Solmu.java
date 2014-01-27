@@ -9,16 +9,18 @@ public class Solmu implements Comparable<Solmu> {
     private int tunnus;
     private int paino;
     private int edellinen;
-    
-/**
- * 
- * @param tunnus sisältää solmun int-arvoisen tunnuksen verkossa, solmujen indeksointi alkaa nollasta
- * @param paino sisältää pienimmän painon lähtöpisteestä kyseiselle solmulle
- */
-    
-    public Solmu(int tunnus, int paino) {
+
+    /**
+     *
+     * @param tunnus sisältää solmun int-arvoisen tunnuksen verkossa, solmujen
+     * indeksointi alkaa nollasta
+     * @param paino sisältää pienimmän painon lähtöpisteestä kyseiselle solmulle
+     * @param edellinen sisältää solmun josta on tulutu tähän solmuun
+     */
+    public Solmu(int tunnus, int paino, int edellinen) {
         setTunnus(tunnus);
         setPaino(paino);
+        setEdellinen(edellinen);
     }
 
     public void setTunnus(int tunnus) {
@@ -37,6 +39,14 @@ public class Solmu implements Comparable<Solmu> {
         return paino;
     }
 
+    public int getEdellinen() {
+        return edellinen;
+    }
+
+    public void setEdellinen(int edellinen) {
+        this.edellinen = edellinen;
+    }
+
     public int compareTo(Solmu o) {
         if (this.paino < o.paino) {
             return -1;
@@ -48,6 +58,5 @@ public class Solmu implements Comparable<Solmu> {
         return 0;
 
     }
-    
 
 }

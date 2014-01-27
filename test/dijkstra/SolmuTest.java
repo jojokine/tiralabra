@@ -19,8 +19,8 @@ public class SolmuTest {
     @Before
     public void setUp() throws Exception {
 
-        solmu = new Solmu(5, 5);
-        solmusuuri = new Solmu(50, 50);
+        solmu = new Solmu(5, 5, 4);
+        solmusuuri = new Solmu(50, 50, 49);
     }
 
     @Test
