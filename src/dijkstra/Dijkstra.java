@@ -11,6 +11,9 @@ public class Dijkstra {
     public static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
     private static int[][] testiVerkko;
 
+    /**
+     * verkko testaamiseen
+     */
     public Dijkstra() {
         testiVerkko = new int[6][6];
         testiVerkko[1][2] = testiVerkko[2][1] = testiVerkko[2][3] = testiVerkko[3][2] = testiVerkko[3][4] = testiVerkko[4][3] = testiVerkko[4][5] = testiVerkko[5][4] = 1;
