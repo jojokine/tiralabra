@@ -46,7 +46,10 @@ public class Dijkstra {
             //otetaan pq:sta päälimmäinen solmu ja katsotaan onko se haettava solmu, jos niin palalautetaan se
             Solmu nykyinen = pq.poll();
             if (nykyinen.getTunnus() == kohde) {
+                System.out.println(nykyinen.getTunnus());
+                System.out.println(nykyinen.getEdellinen());
                 return nykyinen.getPaino();
+                
             }
             for (int i = 0; i < solmut; i++) { // jokaiselle solmulle
                 if (verkko[nykyinen.getTunnus()][i] > 0) {

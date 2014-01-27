@@ -99,7 +99,9 @@ public class DijkstraTest {
         int result = instance.ratkaise(verkko, solmut, lahto, kohde);
         assertEquals(expResult, result);
     }
-
+/**
+ * Testataan ohjelmaa taulukolla josta tiedetään lyhimmän reitin pituus
+ */
     @Test
     public void testTaulukolla() {
         int[][] testiVerkko = new int[6][6];
