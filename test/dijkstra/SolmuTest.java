@@ -16,12 +16,14 @@ public class SolmuTest {
     Solmu solmu;
     Solmu solmusuuri;
 
+
     @Before
     public void setUp() throws Exception {
 
         solmu = new Solmu(5, 5, 4);
         solmusuuri = new Solmu(50, 50, 49);
     }
+
 
     @Test
     public void testaaluonti() {
@@ -37,4 +39,5 @@ public class SolmuTest {
         assertEquals(solmusuuri.compareTo(solmu), 1);
         assertEquals(solmu.compareTo(solmu), 0);
     }
+
 }

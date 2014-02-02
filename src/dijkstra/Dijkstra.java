@@ -1,5 +1,7 @@
 package dijkstra;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 /**
@@ -8,8 +10,9 @@ import java.util.PriorityQueue;
  */
 public class Dijkstra {
 
-    public static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
+    private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
     private static int[][] testiVerkko;
+    private static ArrayList<Solmu> solmut = new ArrayList<Solmu>();
 
     /**
      * verkko testaamiseen
@@ -25,33 +28,34 @@ public class Dijkstra {
 
     /**
      * main testausta varten
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String[] args) {
         Dijkstra dijkstra = new Dijkstra();
-        System.out.println(dijkstra.ratkaise(testiVerkko, 6, 0, 4));
+        System.out.println(dijkstra.ratkaise(testiVerkko, 6, 0, 3));
     }
 
     /**
      *
      * @param verkko syötteenä annettava verkko
-     * @param solmut solmujen yhteislukumäärä verkossa
+     * @param solmuja solmujen yhteislukumäärä verkossa
      * @param lahto lähtösolmun tunnus
      * @param kohde kohdesolmun tunnus
      * @return palauttaa arvonaan lyhimmän reitin painon lähtöpisteestä somulle
      */
-    public int ratkaise(int[][] verkko, int solmut, int lahto, int kohde) {
+    public int ratkaise(int[][] verkko, int solmuja, int lahto, int kohde) {
         pq.add(new Solmu(lahto, 0, 0));
         while (!pq.isEmpty()) {
             //otetaan pq:sta päälimmäinen solmu ja katsotaan onko se haettava solmu, jos niin palalautetaan se
             Solmu nykyinen = pq.poll();
+            reitti(nykyinen);
             if (nykyinen.getTunnus() == kohde) {
-                System.out.println(nykyinen.getTunnus());
-                System.out.println(nykyinen.getEdellinen());
+                tulostaReitti(lahto, kohde);
                 return nykyinen.getPaino();
-                
+
             }
-            for (int i = 0; i < solmut; i++) { // jokaiselle solmulle
+            for (int i = 0; i < solmuja; i++) { // jokaiselle solmulle
                 if (verkko[nykyinen.getTunnus()][i] > 0) {
                     //Lisätään pq:hun solmu, jolla tunnus i ja painona nykyisen solmun paino sekä kaaren paino haettaavaan solmuun
                     pq.add(new Solmu(i, nykyinen.getPaino() + verkko[nykyinen.getTunnus()][i], nykyinen.getTunnus()));
@@ -59,5 +63,23 @@ public class Dijkstra {
             }
         }
         return -1;
+    }
+
+    private void reitti(Solmu nykyinen) {
+        if (!solmut.contains(nykyinen)) {
+            solmut.add(nykyinen);
+        }
+    }
+
+    private void tulostaReitti(int lahto, int kohde) {
+        System.out.print(solmut.get(solmut.size() - 1).getTunnus() +" ");
+        int kasiteltava = kohde;
+        for (int i = solmut.size() - 1; i > 0; i--) {
+            if (solmut.get(i).getEdellinen() != lahto && solmut.get(i).getTunnus() == kasiteltava) {
+                System.out.print(solmut.get(i).getEdellinen() + " ");
+                kasiteltava = solmut.get(i).getEdellinen();
+            }
+        }
+        System.out.println(lahto);
     }
 }
