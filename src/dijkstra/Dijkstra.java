@@ -11,30 +11,7 @@ import java.util.PriorityQueue;
 public class Dijkstra {
 
     private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
-    private static int[][] testiVerkko;
     private static ArrayList<Solmu> solmut = new ArrayList<Solmu>();
-
-    /**
-     * verkko testaamiseen
-     */
-    public Dijkstra() {
-        testiVerkko = new int[6][6];
-        testiVerkko[1][2] = testiVerkko[2][1] = testiVerkko[2][3] = testiVerkko[3][2] = testiVerkko[3][4] = testiVerkko[4][3] = testiVerkko[4][5] = testiVerkko[5][4] = 1;
-        testiVerkko[1][3] = testiVerkko[3][1] = 3;
-        testiVerkko[0][2] = testiVerkko[2][0] = 4;
-        testiVerkko[2][4] = testiVerkko[4][2] = 5;
-        testiVerkko[3][5] = testiVerkko[5][3] = 8;
-    }
-
-    /**
-     * main testausta varten
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-        Dijkstra dijkstra = new Dijkstra();
-        System.out.println(dijkstra.ratkaise(testiVerkko, 6, 0, 3));
-    }
 
     /**
      *
@@ -72,7 +49,7 @@ public class Dijkstra {
     }
 
     private void tulostaReitti(int lahto, int kohde) {
-        System.out.print(solmut.get(solmut.size() - 1).getTunnus() +" ");
+        System.out.print("Lyhin reitti on: " + solmut.get(solmut.size() - 1).getTunnus() + " ");
         int kasiteltava = kohde;
         for (int i = solmut.size() - 1; i > 0; i--) {
             if (solmut.get(i).getEdellinen() != lahto && solmut.get(i).getTunnus() == kasiteltava) {
