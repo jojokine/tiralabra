@@ -10,7 +10,8 @@ import java.util.PriorityQueue;
  */
 public class Dijkstra {
 
-    private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
+    private static MinimiKeko keko = new MinimiKeko();
+   // private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
     private static ArrayList<Solmu> solmut = new ArrayList<Solmu>();
 
     /**
@@ -22,10 +23,13 @@ public class Dijkstra {
      * @return palauttaa arvonaan lyhimmän reitin painon lähtöpisteestä somulle
      */
     public int ratkaise(int[][] verkko, int solmuja, int lahto, int kohde) {
-        pq.add(new Solmu(lahto, 0, 0));
-        while (!pq.isEmpty()) {
-            //otetaan pq:sta päälimmäinen solmu ja katsotaan onko se haettava solmu, jos niin palalautetaan se
-            Solmu nykyinen = pq.poll();
+        keko.lisaa(new Solmu(lahto, 0, 0));
+        // pq.add(new Solmu(lahto, 0, 0));
+        // while (!pq.isEmpty()) {
+        while (keko.getKoko() != 0) {
+            // otetaan pq:sta päälimmäinen solmu ja katsotaan onko se haettava solmu, jos niin palalautetaan se
+            Solmu nykyinen = keko.poista();
+            // Solmu nykyinen = pq.poll();
             reitti(nykyinen);
             if (nykyinen.getTunnus() == kohde) {
                 tulostaReitti(lahto, kohde);
@@ -35,7 +39,8 @@ public class Dijkstra {
             for (int i = 0; i < solmuja; i++) { // jokaiselle solmulle
                 if (verkko[nykyinen.getTunnus()][i] > 0) {
                     //Lisätään pq:hun solmu, jolla tunnus i ja painona nykyisen solmun paino sekä kaaren paino haettaavaan solmuun
-                    pq.add(new Solmu(i, nykyinen.getPaino() + verkko[nykyinen.getTunnus()][i], nykyinen.getTunnus()));
+                    keko.lisaa(new Solmu(i, nykyinen.getPaino() + verkko[nykyinen.getTunnus()][i], nykyinen.getTunnus()));
+                    // pq.add(new Solmu(i, nykyinen.getPaino() + verkko[nykyinen.getTunnus()][i], nykyinen.getTunnus()));
                 }
             }
         }

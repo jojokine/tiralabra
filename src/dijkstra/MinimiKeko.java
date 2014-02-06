@@ -56,8 +56,14 @@ public class MinimiKeko {
     }
 
     public Solmu poista() {
-        return null;
-
+        Solmu poistettava;
+        poistettava = keko[0];
+        keko[0] = keko[koko - 1];
+        koko--;
+        if (koko > 0) {
+            alas(0);
+        }
+        return poistettava;
     }
 
 //parent(i)
@@ -66,19 +72,39 @@ public class MinimiKeko {
 //return 2i
 //right(i)
 //return 2i+1
-    public void heapify(Solmu[] keko, int i) {
-        int vasen = 2 * i;
-        int oikea = 2 * 1 + 1;
-
-        {
-
+    public void alas(int indeksi) {
+        int vasenIndeksi, oikeaIndeksi, pieninIndeksi;
+        Solmu apu;
+        vasenIndeksi = 2 * indeksi;
+        oikeaIndeksi = 2 * indeksi + 1;
+        if (oikeaIndeksi >= koko) {
+            if (vasenIndeksi >= koko) {
+                return;
+            } else {
+                pieninIndeksi = vasenIndeksi;
+            }
+        } else {
+            if (keko[vasenIndeksi].getPaino() <= keko[oikeaIndeksi].getPaino()) {
+                pieninIndeksi = vasenIndeksi;
+            } else {
+                pieninIndeksi = oikeaIndeksi;
+            }
         }
+        if (keko[indeksi].getPaino() > keko[pieninIndeksi].getPaino()) {
+            apu = keko[pieninIndeksi];
+            keko[pieninIndeksi] = keko[indeksi];
+            keko[indeksi] = apu;
+            alas(pieninIndeksi);
+        }
+
     }
-/**
- * Palauttaa true tai false sen mukaan sisältääkö keko haetun solmun
- * @param etsittava haettava solmu
- * @return 
- */
+
+    /**
+     * Palauttaa true tai false sen mukaan sisältääkö keko haetun solmun
+     *
+     * @param etsittava haettava solmu
+     * @return
+     */
     public boolean sisaltaa(Solmu etsittava) {
         for (int i = 0; i < keko.length; i++) {
             if (keko[i] == etsittava) {
