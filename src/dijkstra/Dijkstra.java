@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public class Dijkstra {
 
     private static MinimiKeko keko = new MinimiKeko();
-   // private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
+    // private static PriorityQueue<Solmu> pq = new PriorityQueue<Solmu>();
     private static ArrayList<Solmu> solmut = new ArrayList<Solmu>();
 
     /**
@@ -53,15 +53,22 @@ public class Dijkstra {
         }
     }
 
-    private void tulostaReitti(int lahto, int kohde) {
+    public void tulostaReitti(int lahto, int kohde) {
+        //String reitti;
+        //reitti = "Lyhin reitti on: " + solmut.get(solmut.size() - 1).getTunnus() + " ";
         System.out.print("Lyhin reitti on: " + solmut.get(solmut.size() - 1).getTunnus() + " ");
         int kasiteltava = kohde;
         for (int i = solmut.size() - 1; i > 0; i--) {
             if (solmut.get(i).getEdellinen() != lahto && solmut.get(i).getTunnus() == kasiteltava) {
+                //reitti = reitti + solmut.get(i).getEdellinen() + " ";
                 System.out.print(solmut.get(i).getEdellinen() + " ");
                 kasiteltava = solmut.get(i).getEdellinen();
+                
             }
         }
         System.out.println(lahto);
+        //reitti = reitti + lahto;
+        //return reitti;
+
     }
 }

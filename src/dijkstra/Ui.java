@@ -48,6 +48,7 @@ public class Ui {
         testiVerkko[3][5] = testiVerkko[5][3] = 8;
 
         Dijkstra dijkstra = new Dijkstra();
+        // System.out.println(dijkstra.tulostaReitti(lahto, kohde));
         System.out.println("Reitin pituus on: " + dijkstra.ratkaise(testiVerkko, 6, 0, 3));
     }
 }
