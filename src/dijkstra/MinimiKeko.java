@@ -54,11 +54,12 @@ public class MinimiKeko {
             }
         }
     }
-    
-/**
- * Poistetaan keosta pienin, siis ylimpänä oleva solmu ja palautetaan se
- * @return 
- */
+
+    /**
+     * Poistetaan keosta pienin, siis ylimpänä oleva solmu ja palautetaan se
+     *
+     * @return
+     */
     public Solmu poista() {
         Solmu poistettava;
         poistettava = keko[0];
@@ -70,16 +71,11 @@ public class MinimiKeko {
         return poistettava;
     }
 
-//parent(i)
-//return bi/2c
-//left(i)
-//return 2i
-//right(i)
-//return 2i+1
-    
     /**
-     * Siirretään indeksin määrittämää solmua keossa alaspäin kunnes se on kekoehdon mukaan oikeassa kohdassa
-     * @param indeksi siirron aloitussolmun indeksi 
+     * Siirretään indeksin määrittämää solmua keossa alaspäin kunnes se on
+     * kekoehdon mukaan oikeassa kohdassa
+     *
+     * @param indeksi siirron aloitussolmun indeksi
      */
     public void alas(int indeksi) {
         int vasenIndeksi, oikeaIndeksi, pieninIndeksi;

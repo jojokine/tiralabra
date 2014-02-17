@@ -103,12 +103,11 @@ public class ListaTest {
      */
     @Test
     public void testGet() {
-        System.out.println("get");
-        int indeksi = 0;
         Lista instance = new Lista();
-        instance.get(indeksi);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.add(testisolmu);
+        assertEquals(1, instance.size());
+        assertEquals(true, instance.contains(testisolmu));
+        assertEquals(instance.get(0), testisolmu);
     }
 
 }

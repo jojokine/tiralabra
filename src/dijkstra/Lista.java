@@ -54,7 +54,8 @@ public class Lista {
 
     }
 
-    public void get(int indeksi) {
+    public Solmu get(int indeksi) {
+        return lista[indeksi];
 
     }
 
