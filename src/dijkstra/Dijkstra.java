@@ -1,9 +1,5 @@
 package dijkstra;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.PriorityQueue;
-
 /**
  *
  * @author jojokine@cs
@@ -14,6 +10,10 @@ public class Dijkstra {
     private static Lista solmut; //= new Lista();
     private String reittirev;
     private String reitti;
+
+    public static void main(String[] args) {
+        Ui.ui();  
+    }
 
     /**
      *
@@ -56,7 +56,9 @@ public class Dijkstra {
         int kasiteltava = kohde;
         for (int i = Dijkstra.solmut.size() - 1; i > 0; i--) {
             if (Dijkstra.solmut.get(i).getEdellinen() != lahto && Dijkstra.solmut.get(i).getTunnus() == kasiteltava) {
-                reittirev = reittirev + Dijkstra.solmut.get(i).getEdellinen() + " ";
+                if (!reittirev.contains("" + Dijkstra.solmut.get(i).getEdellinen())) {
+                    reittirev = reittirev + Dijkstra.solmut.get(i).getEdellinen() + " ";
+                }
                 kasiteltava = Dijkstra.solmut.get(i).getEdellinen();
             }
         }

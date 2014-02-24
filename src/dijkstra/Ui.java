@@ -14,6 +14,12 @@ public class Ui {
     private static int lahto;
     private static int kohde;
 
+    /**
+     * Pyytää syötettä annetulla pyynnöllä, tarkistaa että syöte on numeroarvo ja palauttaa sen.
+     * Virheellisen syötteen tapauksessa syötettä pyydetään uudestaan.
+     * @param pyynto Syötepyyntö, joka tulostetaan käyttäjälle
+     * @return 
+     */
     private static int lukija(String pyynto) {
         int arvo = 0;
         while (true) {
@@ -28,7 +34,11 @@ public class Ui {
         return arvo;
     }
 
-    public static void main(String[] args) {
+    /**
+     * kerää käyttäjältä vierusmatsiisiesityksen verkosta sekä lähtö- ja kohdesolmut, 
+     * kutsuu saaduilla tiedoilla reitinlaskijaa.
+     */
+    public static void ui() {
         solmuja = lukija("Montako solmua?");
         verkko = new int[solmuja][solmuja];
         for (int i = 0;
@@ -43,7 +53,6 @@ public class Ui {
         lahto = lukija("Anna lähtösolmun numero (ensimmäinen solmu on solmu 0)");
         kohde = lukija("Anna maalisolmun numero (viimeinen solmu on solmujen lkm -1)");
         Dijkstra dijkstra = new Dijkstra();
-        System.out.println(
-                "Reitin pituus on: " + dijkstra.ratkaise(verkko, solmuja, lahto, kohde));
+        System.out.println("Reitin pituus on: " + dijkstra.ratkaise(verkko, solmuja, lahto, kohde));
     }
 }

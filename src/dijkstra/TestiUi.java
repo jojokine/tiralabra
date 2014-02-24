@@ -14,7 +14,7 @@ public class TestiUi {
     private static int[][] testiVerkko;
     private static int[][] testiVerkko2;
 
-    public static void main(String[] args) {
+    public static void testiui() {
         testi1();
         testi2();
 
@@ -26,7 +26,7 @@ public class TestiUi {
         testiVerkko[1][2] = testiVerkko[2][1] = 1;
         testiVerkko[2][3] = testiVerkko[3][2] = 2;
         testiVerkko[3][0] = testiVerkko[0][3] = 1;
-        testiVerkko[1][4] = testiVerkko[4][1] = 2;
+        testiVerkko[1][4] = testiVerkko[4][1] = 5;
 
         Dijkstra dijkstra = new Dijkstra();
 
