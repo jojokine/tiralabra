@@ -5,8 +5,6 @@
  */
 package dijkstra;
 
-import java.util.Scanner;
-
 /**
  *
  * @author osku
@@ -16,12 +14,12 @@ public class TestiUi {
     private static int[][] testiVerkko;
     private static int[][] testiVerkko2;
 
-
     public static void main(String[] args) {
         testi2();
-  
+
     }
-       public static void testi2() { 
+
+    public static void testi2() {
         testiVerkko2 = new int[6][6];
         testiVerkko2[1][2] = testiVerkko2[2][1] = testiVerkko2[2][3] = testiVerkko2[3][2] = testiVerkko2[3][4] = testiVerkko2[4][3] = testiVerkko2[4][5] = testiVerkko2[5][4] = 1;
         testiVerkko2[1][3] = testiVerkko2[3][1] = 3;
@@ -34,6 +32,7 @@ public class TestiUi {
         System.out.println("Reitin pituus on: " + dijkstra2.ratkaise(testiVerkko2, 6, 0, 4));
 
     }
+
     public static void testi1() {
         testiVerkko = new int[5][5];
         testiVerkko[0][1] = testiVerkko[1][0] = 5;

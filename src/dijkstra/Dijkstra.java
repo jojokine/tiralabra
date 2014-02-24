@@ -64,7 +64,5 @@ public class Dijkstra {
             reitti = reitti + reittirev.charAt(i);
         }
         System.out.println(reitti);
-
     }
-
 }
