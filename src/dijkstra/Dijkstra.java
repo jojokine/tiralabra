@@ -12,6 +12,8 @@ public class Dijkstra {
 
     private static MinimiKeko keko = new MinimiKeko();
     private static Lista solmut = new Lista();
+    private String reittirev;
+    private String reitti;
 
     /**
      *
@@ -30,7 +32,6 @@ public class Dijkstra {
             if (nykyinen.getTunnus() == kohde) {
                 tulostaReitti(lahto, kohde);
                 return nykyinen.getPaino();
-
             }
             for (int i = 0; i < solmuja; i++) { // jokaiselle solmulle
                 if (verkko[nykyinen.getTunnus()][i] > 0) {
@@ -49,8 +50,6 @@ public class Dijkstra {
     }
 
     public void tulostaReitti(int lahto, int kohde) {
-        String reittirev;
-        String reitti;
         reitti = "Lyhin reitti on: ";
         reittirev = Dijkstra.solmut.get(Dijkstra.solmut.size() - 1).getTunnus() + " ";
         int kasiteltava = kohde;
@@ -65,8 +64,6 @@ public class Dijkstra {
             reitti = reitti + reittirev.charAt(i);
         }
         System.out.println(reitti);
-
-
 
     }
 
