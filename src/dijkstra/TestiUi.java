@@ -15,21 +15,8 @@ public class TestiUi {
     private static int[][] testiVerkko2;
 
     public static void main(String[] args) {
+        testi1();
         testi2();
-
-    }
-
-    public static void testi2() {
-        testiVerkko2 = new int[6][6];
-        testiVerkko2[1][2] = testiVerkko2[2][1] = testiVerkko2[2][3] = testiVerkko2[3][2] = testiVerkko2[3][4] = testiVerkko2[4][3] = testiVerkko2[4][5] = testiVerkko2[5][4] = 1;
-        testiVerkko2[1][3] = testiVerkko2[3][1] = 3;
-        testiVerkko2[0][2] = testiVerkko2[2][0] = 4;
-        testiVerkko2[2][4] = testiVerkko2[4][2] = 5;
-        testiVerkko2[3][5] = testiVerkko2[5][3] = 8;
-
-        Dijkstra dijkstra2 = new Dijkstra();
-
-        System.out.println("Reitin pituus on: " + dijkstra2.ratkaise(testiVerkko2, 6, 0, 4));
 
     }
 
@@ -47,4 +34,17 @@ public class TestiUi {
 
     }
 
+    public static void testi2() {
+        testiVerkko2 = new int[6][6];
+        testiVerkko2[1][2] = testiVerkko2[2][1] = testiVerkko2[2][3] = testiVerkko2[3][2] = testiVerkko2[3][4] = testiVerkko2[4][3] = testiVerkko2[4][5] = testiVerkko2[5][4] = 1;
+        testiVerkko2[1][3] = testiVerkko2[3][1] = 3;
+        testiVerkko2[0][2] = testiVerkko2[2][0] = 4;
+        testiVerkko2[2][4] = testiVerkko2[4][2] = 5;
+        testiVerkko2[3][5] = testiVerkko2[5][3] = 8;
+
+        Dijkstra dijkstra2 = new Dijkstra();
+
+        System.out.println("Reitin pituus on: " + dijkstra2.ratkaise(testiVerkko2, 6, 0, 3));
+
+    }
 }

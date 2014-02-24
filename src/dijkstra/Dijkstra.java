@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 public class Dijkstra {
 
     private static MinimiKeko keko = new MinimiKeko();
-    private static Lista solmut = new Lista();
+    private static Lista solmut; //= new Lista();
     private String reittirev;
     private String reitti;
 
@@ -25,6 +25,7 @@ public class Dijkstra {
      */
     public int ratkaise(int[][] verkko, int solmuja, int lahto, int kohde) {
         keko.lisaa(new Solmu(lahto, 0, 0));
+        solmut = new Lista();
         while (keko.getKoko() != 0) {
             // otetaan keosta päälimmäinen solmu ja katsotaan onko se haettava solmu, jos niin palalautetaan se
             Solmu nykyinen = keko.poista();
