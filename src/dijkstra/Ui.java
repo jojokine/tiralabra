@@ -15,10 +15,12 @@ public class Ui {
     private static int kohde;
 
     /**
-     * Pyytää syötettä annetulla pyynnöllä, tarkistaa että syöte on numeroarvo ja palauttaa sen.
-     * Virheellisen syötteen tapauksessa syötettä pyydetään uudestaan.
+     * Pyytää syötettä annetulla pyynnöllä, tarkistaa että syöte on numeroarvo
+     * ja palauttaa sen. Virheellisen syötteen tapauksessa syötettä pyydetään
+     * uudestaan.
+     *
      * @param pyynto Syötepyyntö, joka tulostetaan käyttäjälle
-     * @return 
+     * @return
      */
     private static int lukija(String pyynto) {
         int arvo = 0;
@@ -35,8 +37,8 @@ public class Ui {
     }
 
     /**
-     * kerää käyttäjältä vierusmatsiisiesityksen verkosta sekä lähtö- ja kohdesolmut, 
-     * kutsuu saaduilla tiedoilla reitinlaskijaa.
+     * kerää käyttäjältä vierusmatsiisiesityksen verkosta sekä lähtö- ja
+     * kohdesolmut, kutsuu saaduilla tiedoilla reitinlaskijaa.
      */
     public static void ui() {
         solmuja = lukija("Montako solmua?");
@@ -50,8 +52,25 @@ public class Ui {
                 }
             }
         }
-        lahto = lukija("Anna lähtösolmun numero (ensimmäinen solmu on solmu 0)");
-        kohde = lukija("Anna maalisolmun numero (viimeinen solmu on solmujen lkm -1)");
+        while (true) {
+            lahto = lukija("Anna lähtösolmun numero (ensimmäinen solmu on solmu 0)");
+            if (lahto >= 0 && lahto < solmuja) {
+                break;
+            }
+            else{
+                System.out.println("Antamasi lähtösolmu ei ole verkossa! Anna verkossa oleva solmu.");
+            }
+        }
+        while (true) {
+            kohde = lukija("Anna maalisolmun numero (viimeinen solmu on solmujen lkm -1)");
+            if (kohde >= 0 && kohde < solmuja) {
+                break;
+            }
+            else{
+                System.out.println("Antamasi kohdesolmu ei ole verkossa! Anna verkossa oleva solmu.");
+            }
+        }
+        
         Dijkstra dijkstra = new Dijkstra();
         System.out.println("Reitin pituus on: " + dijkstra.ratkaise(verkko, solmuja, lahto, kohde));
     }
